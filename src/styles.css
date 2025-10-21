@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --bg-primary-color: #3d72fc;
+    --bg-secondary-color: #f4f4f4;
+    --bg-black-color: #000000;
+
+    --text-primary-color: #000000;
+    --text-secondary-color: #3d72fc;
+    --text-white-color: #ffffff;
+    
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

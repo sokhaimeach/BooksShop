@@ -4,57 +4,59 @@
     <a href="">Book Shop</a>
   </div>
   <!-- start menu -->
-  <menu>
-    <ul>
-      <li class="li">
-        <a href="">Home</a>
-      </li>
-      <li class="li">
-        <a href="">Book</a>
-      </li>
-      <li class="li">
-        <a href="">Authors <i class="bi bi-chevron-down ms-1"></i></a>
-        <ul class="sub-menu">
-          <li><a href="">Sokhai</a></li>
-          <li><a href="">Sokhai</a></li>
-          <li><a href="">Sokhai</a></li>
-          <li><a href="">Sokhai</a></li>
-          <li><a href="">Sokhai</a></li>
-        </ul>
-      </li>
-      <li class="li">
-        <a href="">Categories<i class="bi bi-chevron-down ms-1"></i></a>
-        <ul class="sub-menu">
-          <li><a href="">Action</a></li>
-          <li><a href="">Horror</a></li>
-          <li><a href="">Sokhai</a></li>
-          <li><a href="">Sokhai</a></li>
-          <li><a href="">Sokhai</a></li>
-        </ul>
-      </li>
-      <li class="li">
-        <a href="">About</a>
-      </li>
-      <li class="li">
-        <a href="">Contact</a>
-      </li>
-    </ul>
-  </menu>
+  <ul class="menu">
+    <li class="li">
+      <a href="">Home</a>
+    </li>
+    <li class="li">
+      <a href="">Book</a>
+    </li>
+    <li class="li">
+      <a href="">Authors <i class="bi bi-chevron-down ms-1"></i></a>
+      <ul class="sub-menu">
+        <li><a href="">Sokhai</a></li>
+        <li><a href="">Sokhai</a></li>
+        <li><a href="">Sokhai</a></li>
+        <li><a href="">Sokhai</a></li>
+        <li><a href="">Sokhai</a></li>
+      </ul>
+    </li>
+    <li class="li">
+      <a href="">Categories<i class="bi bi-chevron-down ms-1"></i></a>
+      <ul class="sub-menu">
+        <li><a href="">Action</a></li>
+        <li><a href="">Horror</a></li>
+        <li><a href="">Sokhai</a></li>
+        <li><a href="">Sokhai</a></li>
+        <li><a href="">Sokhai</a></li>
+      </ul>
+    </li>
+    <li class="li">
+      <a href="">About</a>
+    </li>
+    <li class="li">
+      <a href="">Contact</a>
+    </li>
+  </ul>
   <!-- end::menu -->
   <!-- start fav cart login -->
   <div class="menu-icon">
+    <!-- button search -->
+    <button class="btn btn-sm btn-cart me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+      <i class="bi bi-search"></i>
+    </button>
     <!-- button add to cart -->
     <button type="button" class="btn position-relative btn-sm btn-cart">
       <i class="bi bi-bag-fill"></i>
       <span
         class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
       >
-        99+
+        0
         <span class="visually-hidden">unread messages</span>
       </span>
     </button>
     <!-- button add to favorite -->
-    <button type="button" class="btn btn-sm position-relative btn-cart ms-3">
+    <button type="button" class="btn btn-sm position-relative btn-cart ms-2">
       <i class="bi bi-bookmark-heart-fill"></i>
       <span
         class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"
@@ -63,10 +65,65 @@
       </span>
     </button>
     <!-- button login -->
-    <button class="btn login ms-3">Login</button>
+    <button class="btn login ms-2">Login</button>
     <!-- button register -->
-    <button class="btn register ms-2">Register</button>
+    <button class="btn register ms-2 me-5">Register</button>
+    <button class="btn btn-sm menu-list ms-2 me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+      <i class="fa fa-list"></i>
+    </button>
   </div>
 </nav>
+<!-- start off canvas menu -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title sub-menu-title" id="offcanvasExampleLabel">MENU LISTS</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="off-list">
+      <li class="sub-li"><a class="sub-link">Home</a></li>
+      <li class="sub-li"><a class="sub-link">Book</a></li>
+      <li class="sub-li">
+        <a class="sub-link">Authors</a><i class="bi bi-chevron-down ms-1"></i>
+        <ul class="off-sub-list">
+          <li><a href="">Sokhai</a></li>
+          <li><a href="">Sokhai</a></li>
+          <li><a href="">Sokhai</a></li>
+          <li><a href="">Sokhai</a></li>
+          <li><a href="">Sokhai</a></li>
+      </ul>
+      </li>
+      <li class="sub-li">
+        <a class="sub-link">Categories</a><i class="bi bi-chevron-down ms-1"></i>
+        <ul class="off-sub-list">
+          <li><a href="">Sokhai</a></li>
+          <li><a href="">Sokhai</a></li>
+          <li><a href="">Sokhai</a></li>
+          <li><a href="">Sokhai</a></li>
+          <li><a href="">Sokhai</a></li>
+      </ul>
+      </li>
+      <li class="sub-li"><a class="sub-link">About</a></li>
+      <li class="sub-li"><a class="sub-link">Contact</a></li>
+    </ul>
+  </div>
+</div>
+<!-- end::off canvas menu -->
+<!-- start search off canvas -->
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title sub-menu-title" id="offcanvasTopLabel">SEARCH</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <search>
+      <input class="search" type="search" placeholder="Search books?">
+      <button class="btn search-i ms-4">
+        <i class="bi bi-search"></i>
+      </button>
+    </search>
+  </div>
+</div>
+<!-- end::search off canvas -->
 
 <router-outlet />

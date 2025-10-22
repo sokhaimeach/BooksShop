@@ -127,3 +127,110 @@
 <!-- end::search off canvas -->
 
 <router-outlet />
+
+<!-- Start Footer -->
+<footer  id="tempaltemo_footer" style="background-color: var(--bg-primary-color);">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 pt-5">
+        <h2 class="h2 border-bottom pb-3 border-light" style="font-weight: 900;">Book Shop</h2>
+        <ul class="list-unstyled text-light footer-link-list">
+          <li>
+            <a style="text-decoration: none;" href="https://www.google.com/maps/place/%E1%9E%9C%E1%9E%B7%E1%9E%91%E1%9F%92%E1%9E%99%E1%9E%B6%E1%9E%9F%E1%9F%92%E1%9E%90%E1%9E%B6%E1%9E%93%E2%80%8B+%E1%9E%9F%E1%9F%8A%E1%9E%B7%E1%9E%8F%E1%9E%B7%E1%9E%80/@11.5682046,104.8925544,16.68z/data=!4m6!3m5!1s0x31095173761d4a53:0xcd09ff2f4d326e3f!8m2!3d11.5680861!4d104.8947315!16s%2Fg%2F11r8vvxw9?entry=ttu&g_ep=EgoyMDI1MDkzMC4wIKXMDSoASAFQAw%3D%3D">
+              <i class="fas fa-map-marker-alt fa-fw"></i>
+              SETEC Institute, Phnom Penh, Cambodia
+            </a>
+          </li>
+          <li>
+            <a class="text-decoration-none" href="tel:0965496483">
+              <i class="fa fa-phone fa-fw"></i>
+              096 123 4567
+            </a>
+          </li>
+          <li>
+            <a class="text-decoration-none" href="https://www.setecu.com/">
+              <i class="fa fa-envelope fa-fw"></i>
+              bookshop@gmail.com
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-5 pt-5">
+        <div class="row">
+          <div class="col-6">
+            <h2 class="h2 text-light border-bottom pb-3 border-light" style="font-weight: 900;">AUTHORS</h2>
+            <div class="d-flex">
+              <ul class="list-unstyled text-light footer-link-list">
+                <li><a class="text-decoration-none" [routerLink]="['/shop', 'female']">Women</a></li>
+                <li><a class="text-decoration-none" [routerLink]="['/shop', 'male']">Men</a></li>
+                <li><a class="text-decoration-none" [routerLink]="['/shop', 't-shirt']">T-shirt</a></li>
+                <li><a class="text-decoration-none" [routerLink]="['/shop', 'shirt']">Shirt</a></li>
+                <li><a class="text-decoration-none" [routerLink]="['/shop', 'jeans']">Jeans</a></li>
+                <li><a class="text-decoration-none" [routerLink]="['/shop', 'hat']">Hat</a></li>
+                <li><a class="text-decoration-none" [routerLink]="['/shop', 'skirt']">Skirt</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-6">
+            <h2 class="h2 text-light border-bottom pb-3 border-light" style="font-weight: 900;">CATEGORIES</h2>
+            <div class="d-flex">
+              <ul class="list-unstyled text-light footer-link-list">
+                <li><a class="text-decoration-none" [routerLink]="['/shop', 'female']">Women</a></li>
+                <li><a class="text-decoration-none" [routerLink]="['/shop', 'male']">Men</a></li>
+                <li><a class="text-decoration-none" [routerLink]="['/shop', 't-shirt']">T-shirt</a></li>
+                <li><a class="text-decoration-none" [routerLink]="['/shop', 'shirt']">Shirt</a></li>
+                <li><a class="text-decoration-none" [routerLink]="['/shop', 'jeans']">Jeans</a></li>
+                <li><a class="text-decoration-none" [routerLink]="['/shop', 'hat']">Hat</a></li>
+                <li><a class="text-decoration-none" [routerLink]="['/shop', 'skirt']">Skirt</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 pt-5">
+        <h2 class="h2 text-light border-bottom pb-3 border-light" style="font-weight: 900;">PAGES</h2>
+        <ul class="list-unstyled text-light footer-link-list">
+          <li><a class="text-decoration-none" [routerLink]="['/']">Home</a></li>
+          <li><a class="text-decoration-none" [routerLink]="['/about']">Book</a></li>
+          <li><a class="text-decoration-none" [routerLink]="['/contact']">About</a></li>
+          <li><a class="text-decoration-none" [routerLink]="['/contact']">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="row text-light mb-4">
+      <div class="col-12 mb-3">
+        <div class="w-100 my-3 border-top border-light"></div>
+      </div>
+      <div class="col-auto me-auto">
+        <ul class="list-inline text-left footer-icons media">
+          <li class="list-inline-item rounded-circle text-center white-border">
+            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i
+                class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+          </li>
+          <li class="list-inline-item rounded-circle text-center white-border">
+            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i
+                class="fab fa-instagram fa-lg fa-fw"></i></a>
+          </li>
+          <li class="list-inline-item rounded-circle text-center white-border">
+            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i
+                class="fab fa-twitter fa-lg fa-fw"></i></a>
+          </li>
+          <li class="list-inline-item rounded-circle text-center white-border">
+            <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i
+                class="fab fa-linkedin fa-lg fa-fw"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-100 bg-black py-3">
+    <p class="text-center text-light" style="margin-bottom: 0px;">Enjoy your shopping experience!</p>
+  </div>
+
+</footer>
+<!-- End Footer -->

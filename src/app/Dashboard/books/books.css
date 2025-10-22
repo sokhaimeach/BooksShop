@@ -1,0 +1,66 @@
+.page-title {
+    font-weight: 700;
+    color: var(--text-secondary-color);
+}
+/* report */
+.report {
+    display: flex;
+    gap: 20px;
+}
+.report-box {
+    width: 25%;
+    padding: 20px;
+    height: 70px;
+    background-color: var(--bg-primary-color);
+    border-radius: 20px;
+    color: var(--text-white-color);
+    display: flex;
+    align-items: center;
+}
+.report-box i {
+    font-size: 48px;    
+}
+.report-box .text {
+    padding-top: 18px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.report-box .title {
+    font-weight: 700;
+    line-height: 23px;
+}
+/* add book button */
+.btn-add {
+    height: 40px;
+    border-radius: 20px;
+    background-color: var(--bg-black-color);
+    color: var(--text-white-color);
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+.btn-add:hover {
+    background-color: var(--bg-primary-color);
+}
+.btn-add:active{
+    transform: scale(0.9);
+    color: var(--text-white-color);
+}
+/* table */
+table {
+    border: 1px solid rgba(0, 0, 0, 0.375);
+    margin-top: 20px;
+}
+thead tr th {
+    background-color: var(--bg-primary-color);
+    color: var(--text-white-color);
+}
+.no {
+    width: 50px;
+}
+.action {
+    width: 170px;
+}

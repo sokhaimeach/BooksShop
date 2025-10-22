@@ -62,14 +62,15 @@
 
 /* start dashboard container */
 .dashboard-container {
-    width: calc(100% - 270px);
-    height: calc(100% - 20px);
-    margin: 10px;
-    border-radius: 15px;
+    width: calc(100% - 250px);
+    height: 100%;
+    /* margin: 10px; */
+    /* border-radius: 15px; */
     background-color: white;
 }
 /* navbar */
 .admin-navbar {
+    margin-top: 10px;
     width: 100%;
     height: 70px;
     padding: 10px;
@@ -131,4 +132,8 @@
     color: var(--text-white-color);
     padding-left: 20px;
     padding-right: 20px;
+}
+/* report table */
+.report-table {
+    padding: 30px;
 }

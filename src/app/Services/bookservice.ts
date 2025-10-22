@@ -12,4 +12,12 @@ export class Bookservice {
   GetAllBook(){
     return this.http.get<Book>(this.url + 'GetAllBook');
   }
+
+  DeleteBook(id: string){
+    return this.http.delete(this.url + "DeleteBook/" + id);
+  }
+
+  AddBook(book: any){
+    return this.http.post(this.url + 'AddBook', book);
+  }
 }

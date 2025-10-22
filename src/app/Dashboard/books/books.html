@@ -35,7 +35,7 @@
 <!-- end::report -->
 
 <!-- add new book -->
-<button class="btn btn-add">Add new book</button>
+<button class="btn btn-add" data-bs-toggle="modal" data-bs-target="#exampleModal">Add new book</button>
 
 <!-- start table -->
 @defer (on timer(500ms)) {
@@ -62,7 +62,7 @@
         <button class="btn btn-warning btn-sm">
           <i class="bi bi-pencil-square me-2"></i>Edit
         </button>
-        <button class="btn btn-danger btn-sm ms-2">
+        <button class="btn btn-danger btn-sm ms-2" (click)="Delete(book.id)">
           <i class="bi bi-trash me-2"></i>Delete
         </button>
       </td>
@@ -72,3 +72,69 @@
 </table>
 }
 <!-- end::table -->
+
+<!-- start modal -->
+<!-- Button trigger modal -->
+<div class="modal fade" style="z-index: 2000 !important;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Add new book</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="col-12">
+          <!-- title and price -->
+          <div class="row">
+            <div class="col-6">
+              <label class="cus-lable" for="">Input Title</label>
+              <input class="w-100 cus-input" type="text" placeholder="Title">
+            </div>
+            <div class="col-6">
+              <label class="cus-lable" for="">Input Price</label>
+              <input class="w-100 cus-input" type="number" placeholder="Title">
+            </div>
+          </div>
+          <!-- category and author -->
+          <div class="row mt-3">
+            <div class="col-6">
+              <label class="cus-lable" for="">Choose Category</label>
+              <select class="w-100 cus-input" name="" id="">
+                <option value="">AAA</option>
+                <option value="">AAA</option>
+                <option value="">AAA</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label class="cus-lable" for="">Choose Author</label>
+              <select class="w-100 cus-input" name="" id="">
+                <option value="">Sokhai</option>
+                <option value="">AAA</option>
+                <option value="">AAA</option>
+              </select>
+            </div>
+          </div>
+          <!-- image Url -->
+          <div class="row mt-3">
+            <div class="col-12">
+              <label class="cus-lable" for="">Input Image Url</label>
+              <input class="w-100 cus-input" type="text" placeholder="Image Url">
+            </div>
+          </div>
+          <!-- description -->
+          <div class="row mt-3">
+            <div class="col-12">
+              <label class="cus-lable" for="">Write description</label>
+              <textarea class="w-100 cus-textarea" name="" id=""></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end::modal -->

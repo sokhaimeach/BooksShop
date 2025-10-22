@@ -64,3 +64,30 @@ thead tr th {
 .action {
     width: 170px;
 }
+
+
+/* modal */
+.modal-header {
+    background-color: var(--bg-primary-color);
+}
+.modal-header h1 {
+    font-weight: 700;
+}
+.cus-lable {
+    font-size: 18px;
+    font-weight: 600;
+    font-family: var(--font-family);
+    margin-bottom: 5px;
+}
+.cus-input {
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+}
+.cus-textarea {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    height: 120px;
+}

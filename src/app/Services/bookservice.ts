@@ -20,4 +20,8 @@ export class Bookservice {
   AddBook(book: any){
     return this.http.post(this.url + 'AddBook', book);
   }
+
+  UpdateBook(book: any){
+    return this.http.put(this.url + 'UpdateBook', book);
+  }
 }

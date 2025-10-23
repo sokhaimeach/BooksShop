@@ -7,38 +7,46 @@
     <i class="bi bi-info-square-fill"></i>
     <div class="text">
       <h5 class="title text-dark">Quantity</h5>
-      <p class="title fs-4">100</p>
+      <p class="title fs-4">{{ books().length }}</p>
     </div>
   </div>
   <div class="report-box">
     <i class="bi bi-info-square-fill"></i>
     <div class="text">
-      <h5 class="title text-dark">Quantity</h5>
-      <p class="title fs-4">100</p>
+      <h5 class="title text-dark">Author</h5>
+      <p class="title fs-4">{{authors.length}}</p>
     </div>
   </div>
   <div class="report-box">
     <i class="bi bi-info-square-fill"></i>
     <div class="text">
-      <h5 class="title text-dark">Quantity</h5>
-      <p class="title fs-4">100</p>
+      <h5 class="title text-dark">Category</h5>
+      <p class="title fs-4">{{categories.length}}</p>
     </div>
   </div>
   <div class="report-box">
     <i class="bi bi-info-square-fill"></i>
     <div class="text">
-      <h5 class="title text-dark">Quantity</h5>
-      <p class="title fs-4">100</p>
+      <h5 class="title text-dark">Total</h5>
+      <p class="title fs-4">{{total() | currency}}</p>
     </div>
   </div>
 </section>
 <!-- end::report -->
 
-<!-- add new book -->
-<button class="btn btn-add" data-bs-toggle="modal" data-bs-target="#exampleModal">Add new book</button>
+<!-- search and add button -->
+<div class="search-and-add-btn d-flex">
+  <!-- search -->
+  <search class="search">
+    <i class="bi bi-search"></i>
+    <input type="search" #filter (keypress)="search(filter.value)" placeholder="Search..." />
+  </search>
+  <!-- add new book -->
+  <button class="btn btn-add" (click)="ClearItem()" data-bs-toggle="modal" data-bs-target="#exampleModal">Add new book</button>
+</div>
 
 <!-- start table -->
-@defer (on timer(500ms)) {
+@defer (on timer(100ms)) {
 <table class="table table-striped table-hover table-bordered">
   <thead>
     <tr>
@@ -51,15 +59,20 @@
     </tr>
   </thead>
   <tbody>
-    @for(book of books; track $index){
+    @for(book of books(); track $index){
     <tr>
       <th scope="row" class="no">{{$index + 1}}</th>
       <td>{{book.title}}</td>
-      <td>{{book.price}}</td>
+      <td>{{book.price | currency}}</td>
       <td>{{book.category}}</td>
       <td>{{book.authorName}}</td>
       <td class="action">
-        <button class="btn btn-warning btn-sm">
+        <button
+          class="btn btn-warning btn-sm"
+          (click)="openModal(book)"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
           <i class="bi bi-pencil-square me-2"></i>Edit
         </button>
         <button class="btn btn-danger btn-sm ms-2" (click)="Delete(book.id)">
@@ -75,12 +88,19 @@
 
 <!-- start modal -->
 <!-- Button trigger modal -->
-<div class="modal fade" style="z-index: 2000 !important;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" style="z-index: 2000 !important" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Add new book</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">
+          Add new book
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <div class="col-12">
@@ -88,29 +108,51 @@
           <div class="row">
             <div class="col-6">
               <label class="cus-lable" for="">Input Title</label>
-              <input class="w-100 cus-input" type="text" placeholder="Title">
+              <input
+                class="w-100 cus-input"
+                [(ngModel)]="item.title"
+                name="title"
+                type="text"
+                placeholder="Title"
+              />
             </div>
             <div class="col-6">
               <label class="cus-lable" for="">Input Price</label>
-              <input class="w-100 cus-input" type="number" placeholder="Title">
+              <input
+                class="w-100 cus-input"
+                [(ngModel)]="item.price"
+                name="price"
+                type="number"
+                placeholder="Price"
+              />
             </div>
           </div>
           <!-- category and author -->
           <div class="row mt-3">
             <div class="col-6">
               <label class="cus-lable" for="">Choose Category</label>
-              <select class="w-100 cus-input" name="" id="">
-                <option value="">AAA</option>
-                <option value="">AAA</option>
-                <option value="">AAA</option>
+              <select
+                class="w-100 cus-input"
+                [(ngModel)]="item.category"
+                name="category"
+                id=""
+              >
+                @for(cate of categories; track $index){
+                <option [value]="cate">{{cate}}</option>
+                }
               </select>
             </div>
             <div class="col-6">
               <label class="cus-lable" for="">Choose Author</label>
-              <select class="w-100 cus-input" name="" id="">
-                <option value="">Sokhai</option>
-                <option value="">AAA</option>
-                <option value="">AAA</option>
+              <select
+                class="w-100 cus-input"
+                [(ngModel)]="item.authorId"
+                name="author_id"
+                id=""
+              >
+                @for(au of authors; track $index){
+                <option [value]="au.id">{{au.name}}</option>
+                }
               </select>
             </div>
           </div>
@@ -118,21 +160,47 @@
           <div class="row mt-3">
             <div class="col-12">
               <label class="cus-lable" for="">Input Image Url</label>
-              <input class="w-100 cus-input" type="text" placeholder="Image Url">
+              <input
+                class="w-100 cus-input"
+                [(ngModel)]="item.imageUrl"
+                name="image_url"
+                type="text"
+                placeholder="Image Url"
+              />
             </div>
           </div>
           <!-- description -->
           <div class="row mt-3">
             <div class="col-12">
               <label class="cus-lable" for="">Write description</label>
-              <textarea class="w-100 cus-textarea" name="" id=""></textarea>
+              <textarea
+                class="w-100 cus-textarea"
+                [(ngModel)]="item.description"
+                name="description"
+                id=""
+              ></textarea>
             </div>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        @if(isUpdate){
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="Update()"
+          data-bs-dismiss="modal"
+        >
+          Update
+        </button>
+        } @else{
+        <button type="button" class="btn btn-primary" (click)="Insert()">
+          Save
+        </button>
+        }
       </div>
     </div>
   </div>

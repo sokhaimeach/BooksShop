@@ -57,6 +57,10 @@
     margin-right: 20px;
     color: var(--text-white-color);
 }
+.dashboard-menu ul .active{
+    background-color: rgba(255, 255, 255, 0.247);
+    border-radius: 10px;
+}
 
 
 

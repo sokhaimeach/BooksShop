@@ -4,9 +4,11 @@ import { Books } from './Dashboard/books/books';
 import { Authors } from './Dashboard/authors/authors';
 import { Users } from './Dashboard/users/users';
 import { Orders } from './Dashboard/orders/orders';
+import { Home } from './home/home';
 
 export const routes: Routes = [
-    {path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    {path: '', redirectTo: 'home', pathMatch: 'full' },
+    {path: 'home', component: Home},
     {path: 'dashboard', component: Dashboard,
         children: [
             {path: '', redirectTo: 'books', pathMatch: 'full'},

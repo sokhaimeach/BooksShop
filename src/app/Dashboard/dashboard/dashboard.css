@@ -1,6 +1,5 @@
 .dashboard-page {
     position: absolute;
-    /* z-index: 1000; */
     background-color: var(--bg-primary-color);
     top: 0;
     left: 0;

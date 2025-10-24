@@ -11,4 +11,16 @@ export class Authorservice {
   GetAllAuthors(){
     return this.http.get(this.url + 'GetAllAuthors');
   }
+
+  AddAuthor(author: any){
+    return this.http.post(this.url + 'AddAuthor', author);
+  }
+
+  DeleteAuthor(id: string){
+    return this.http.delete(this.url + 'DeleteAuthor/' + id);
+  }
+
+  UpdateAuthor(author: any){
+    return this.http.put(this.url + 'UpdateAuthor', author);
+  }
 }

@@ -1,0 +1,144 @@
+<h5 class="page-title">Authors</h5>
+
+<!-- start report -->
+<section class="report">
+  <!-- quantity -->
+  <div class="report-box">
+    <i class="bi bi-info-square-fill"></i>
+    <div class="text">
+      <h5 class="title text-dark">Quantity</h5>
+      <p class="title fs-4">{{ authors().length }}</p>
+    </div>
+  </div>
+</section>
+<!-- end::report -->
+
+<!-- search and add button -->
+<div class="search-and-add-btn d-flex">
+  <!-- search -->
+  <search class="search">
+    <i class="bi bi-search"></i>
+    <input type="search" #filter (keypress)="search(filter.value)" placeholder="Search..." />
+  </search>
+  <!-- add new book -->
+  <button class="btn btn-add" (click)="ClearItem()" data-bs-toggle="modal" data-bs-target="#exampleModal">Add new book</button>
+</div>
+
+<!-- start table -->
+@defer (on timer(100ms)) {
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+      <th scope="col" class="no">No</th>
+      <th scope="col">Author name</th>
+      <th scope="col">Bio</th>
+      <th scope="col" class="action">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(author of authors(); track $index){
+    <tr>
+      <th scope="row" class="no">{{$index + 1}}</th>
+      <td>{{author.name}}</td>
+      <td>{{author.bio }}</td>
+      <td class="action">
+        <button
+          class="btn btn-warning btn-sm"
+          (click)="openModal(author)"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          <i class="bi bi-pencil-square me-2"></i>Edit
+        </button>
+        <button class="btn btn-danger btn-sm ms-2" (click)="Delete(author.id)">
+          <i class="bi bi-trash me-2"></i>Delete
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+}
+<!-- end::table -->
+
+<!-- start modal -->
+<!-- Button trigger modal -->
+<div class="modal fade" style="z-index: 2000 !important" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">
+          Add new author
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="col-12">
+          <!-- author name -->
+          <div class="row">
+            <div class="col-12">
+              <label class="cus-lable" for="">Input Name</label>
+              <input
+                class="w-100 cus-input"
+                [(ngModel)]="item.name"
+                name="name"
+                type="text"
+                placeholder="Name"
+              />
+            </div>
+          </div>
+          <!-- image Url -->
+          <div class="row mt-3">
+            <div class="col-12">
+              <label class="cus-lable" for="">Input Image Url</label>
+              <input
+                class="w-100 cus-input"
+                [(ngModel)]="item.imageUrl"
+                name="image_url"
+                type="text"
+                placeholder="Image Url"
+              />
+            </div>
+          </div>
+          <!-- bio -->
+          <div class="row mt-3">
+            <div class="col-12">
+              <label class="cus-lable" for="">Write bio</label>
+              <textarea
+                class="w-100 cus-textarea"
+                [(ngModel)]="item.bio"
+                name="bio"
+                id=""
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        @if(isUpdate){
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="Update()"
+          data-bs-dismiss="modal"
+        >
+          Update
+        </button>
+        } @else{
+        <button type="button" class="btn btn-primary" (click)="Insert()">
+          Save
+        </button>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end::modal -->

@@ -1,0 +1,95 @@
+.card{
+    position: relative;
+    border-radius: 40px;
+    margin-bottom: 20px;
+}
+.card img {
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+.card-title{
+    font-weight: 700;
+    font-family: var(--font-family);
+
+}
+.card-text {
+    color: rgba(0, 0, 0, 0.452);
+}
+.star-and-price {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 40px;
+}
+.star {
+    margin-top: 5px;
+}
+.star i{
+    margin-right: 5px;
+}
+.price {
+    font-weight: 900;
+    font-family: var(--font-family);
+}
+.btn-card {
+    position: absolute;
+    background-color: var(--bg-primary-color);
+    border-radius: 20px;
+    width: 170px;
+    height: 40px;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 700;
+    font-family: var(--font-family);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.btn-card:hover{
+    background-color: var(--bg-black-color);
+}
+.hidden-btn {
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    height: fit-content;
+    background-color: var(--bg-primary-color);
+    border-radius: 20px;
+    align-items: center;
+    position: absolute;
+    top: 150px;
+    right: 0px;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+.btn-hide {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px;
+}
+.btn-hide i {
+    color: white;
+}
+.btn-hide:hover{
+    background-color: white;
+}
+.btn-hide:hover i {
+    color: var(--text-secondary-color);
+}
+.card:hover .hidden-btn{
+    right: 20px;
+    opacity: 1;
+}
+.card:hover .card-title, .card:hover .card-text {
+    color: var(--text-secondary-color);
+}

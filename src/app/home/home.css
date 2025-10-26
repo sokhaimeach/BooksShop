@@ -189,3 +189,10 @@ hr {
 .collection-btn:hover .circle{
     background-color: var(--bg-primary-color);
 } 
+.app-cards{
+    width: 100%;
+    display: flex;
+    padding: 50px;
+    gap: 30px;
+    flex-wrap: wrap;
+}

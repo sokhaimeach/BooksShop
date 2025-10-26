@@ -5,10 +5,16 @@ import { Authors } from './Dashboard/authors/authors';
 import { Users } from './Dashboard/users/users';
 import { Orders } from './Dashboard/orders/orders';
 import { Home } from './home/home';
+import { Bookpage } from './bookpage/bookpage';
+import { Authorpage } from './authorpage/authorpage';
+import { Categorypage } from './categorypage/categorypage';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full' },
     {path: 'home', component: Home},
+    {path: 'book', component: Bookpage},
+    {path: 'author', component: Authorpage},
+    {path: 'category', component: Categorypage},
     {path: 'dashboard', component: Dashboard,
         children: [
             {path: '', redirectTo: 'books', pathMatch: 'full'},

@@ -162,4 +162,46 @@ export class Books {
   total() {
     return this.books().reduce((acc, book) => acc + book.price, 0);
   }
+
+  bookimg: string[] = [
+    'https://xtratheme.com/elementor/book-shop/wp-content/uploads/sites/69/2021/09/book-9.jpg',
+    'https://xtratheme.com/elementor/book-shop/wp-content/uploads/sites/69/2017/06/package7-1.jpg',
+    'https://xtratheme.com/elementor/book-shop/wp-content/uploads/sites/69/2017/06/package3-1.jpg',
+    'https://xtratheme.com/elementor/book-shop/wp-content/uploads/sites/69/2017/06/package5-1.jpg',
+    'https://xtratheme.com/elementor/book-shop/wp-content/uploads/sites/69/2017/06/package8-1.jpg',
+    'https://xtratheme.com/elementor/book-shop/wp-content/uploads/sites/69/2017/06/package2-1.jpg',
+    'https://xtratheme.com/elementor/book-shop/wp-content/uploads/sites/69/2017/06/package6-1.jpg',
+    'https://xtratheme.com/elementor/book-shop/wp-content/uploads/sites/69/2021/09/book-10.jpg',
+    'https://xtratheme.com/elementor/book-shop/wp-content/uploads/sites/69/2021/09/book-11.jpg',
+    'https://xtratheme.com/elementor/book-shop/wp-content/uploads/sites/69/2017/06/package5-1.jpg',
+    'https://xtratheme.com/elementor/book-shop/wp-content/uploads/sites/69/2021/09/book-12.jpg',
+    'https://xtratheme.com/elementor/book-shop/wp-content/uploads/sites/69/2017/06/package4-1.jpg'
+  ]
+  author_id: string[] = [
+    '68f5263c6a55b63b7064efe6',
+    '68fad80a2e612453d59bb940',
+    '68fad90a2e612453d59bb942'
+  ]
+
+  combineBook(){
+    let cate = 0;
+    let au = 0;
+    for(let i = 0; i< this.bookimg.length; i++){
+      if(cate == 5){
+        cate = 0;
+      }
+      if(au == 3){
+        au = 0;
+      }
+      this.item.title = 'Book number '+ (i+1);
+      this.item.price = 15 + i;
+      this.item.category = this.categories[cate];
+      cate++;
+      this.item.authorId = this.author_id[au];
+      au++;
+      this.item.imageUrl = this.bookimg[i];
+      this.item.description = 'This is a very good book of all time';
+      this.Insert();
+    }
+  }
 }

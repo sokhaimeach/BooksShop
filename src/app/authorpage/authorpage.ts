@@ -4,23 +4,22 @@ import { Book } from '../Models/Book';
 import { Bookservice } from '../Services/bookservice';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-authorpage',
   imports: [Card],
-  templateUrl: './home.html',
-  styleUrl: './home.css'
+  templateUrl: './authorpage.html',
+  styleUrl: '../bookpage/bookpage.css'
 })
-export class Home {
+export class Authorpage {
   books = signal<Book[]>([]);
   constructor(private bookservice: Bookservice){}
+
   ngOnInit(): void{
-    this.GetAll();
+    this.GetAllBooks();
   }
 
-  // get all books
-  GetAll() {
-    this.bookservice.GetAllBook().subscribe((re: any) => {
-      this.books.set(re)
-
+  GetAllBooks(){
+    this.bookservice.GetBooksByAuthorId('68fad80a2e612453d59bb940').subscribe((re: any) => {
+      this.books.set(re);
     });
   }
 }

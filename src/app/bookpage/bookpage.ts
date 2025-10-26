@@ -1,26 +1,26 @@
 import { Component, signal } from '@angular/core';
-import { Card } from '../card/card';
 import { Book } from '../Models/Book';
 import { Bookservice } from '../Services/bookservice';
+import { Card } from '../card/card';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  imports: [Card],
-  templateUrl: './home.html',
-  styleUrl: './home.css'
+  selector: 'app-bookpage',
+  imports: [Card, RouterLink],
+  templateUrl: './bookpage.html',
+  styleUrl: './bookpage.css'
 })
-export class Home {
+export class Bookpage {
   books = signal<Book[]>([]);
   constructor(private bookservice: Bookservice){}
+
   ngOnInit(): void{
-    this.GetAll();
+    this.GetAllBooks();
   }
 
-  // get all books
-  GetAll() {
+  GetAllBooks(){
     this.bookservice.GetAllBook().subscribe((re: any) => {
-      this.books.set(re)
-
+      this.books.set(re);
     });
   }
 }

@@ -16,3 +16,15 @@ export interface Review{
     comment: string;
     rate: number;
 }
+export interface RealBook{
+    id: string;
+    title: string;
+    price: number;
+    category: string;
+    authorId: string;
+    imageUrl: string;
+    description: string;
+    publishDate: string;
+    favorite: string[];
+    reviews: Review[];
+}

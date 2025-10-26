@@ -24,4 +24,12 @@ export class Bookservice {
   UpdateBook(book: any){
     return this.http.put(this.url + 'UpdateBook', book);
   }
+
+  GetBooksByAuthorId(id: string){
+    return this.http.get(this.url + 'GetBooksByAuthorId/' + id);
+  }
+
+  GetBooksByCategory(category: string){
+    return this.http.get(this.url + 'GetBooksByCategory/' + category);
+  }
 }

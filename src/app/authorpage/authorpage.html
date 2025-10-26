@@ -1,0 +1,21 @@
+<!-- start banner -->
+<section class="banner">
+    <h3>Shop</h3>
+    <div class="position">
+        <i class="bi bi-house-fill me-2" style="cursor: pointer;" routerLink="/"></i>
+        <i class="bi bi-chevron-right me-2"></i>
+        <span>Author</span>
+        <i class="bi bi-chevron-right me-2"></i>
+        <span style="color: var(--text-secondary-color);">Meach Sokhai</span>
+    </div>
+</section>
+<!-- end::banner -->
+
+<!-- text -->
+<div class="text">
+    <h2>Shop</h2>
+    <p>Showing all {{books().length}} results</p>
+</div>
+
+<!-- start show cards -->
+<app-card class="app-cards" [Items]="books()"></app-card>

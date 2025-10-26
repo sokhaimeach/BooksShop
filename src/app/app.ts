@@ -9,4 +9,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class App {
   protected title = 'BookShop';
+  categories: string[] = [
+    'Classic',
+    'Historical',
+    'Economice',
+    'Comic Book',
+    'Action',
+  ];
 }

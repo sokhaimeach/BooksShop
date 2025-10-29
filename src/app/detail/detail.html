@@ -1,0 +1,230 @@
+<!-- start banner -->
+<section class="banner">
+    <h3>Product detail</h3>
+    <div class="position">
+        <i class="bi bi-house-fill me-2" style="cursor: pointer;" routerLink="/"></i>
+        <i class="bi bi-chevron-right me-2"></i>
+        <span>Detail</span>
+        <i class="bi bi-chevron-right me-2"></i>
+        <span style="color: var(--text-secondary-color);">Book number 1</span>
+    </div>
+</section>
+<!-- end::banner -->
+
+<!-- start detail info -->
+<section class="detail-info">
+    <div class="col-12">
+        <div class="row">
+            <!-- picture -->
+            <div class="col-md-6 ps-5 pe-5">
+                <div class="detail-img">
+                    <img src="https://xtratheme.com/elementor/book-shop/wp-content/uploads/sites/69/2021/09/book-11.jpg" alt="">
+                </div>
+            </div>
+            <!-- book details -->
+            <div class="col-md-6">
+                <!-- title and price -->
+                <div class="tetail-text">
+                    <h1>Book number 1</h1>
+                    <div class="review-info">
+                        <div class="star">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                        </div>
+                        <span>(1 customer review)</span>
+                    </div>
+                    <h1 class="price">$34</h1>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium similique deleniti consequuntur quas, ab totam adipisci delectus omnis odio eius placeat ullam architecto, tenetur modi exercitationem aut numquam quo nobis.</p>
+                </div>
+                <!-- add to cart button -->
+                <div class="add-to-cart">
+                    <div class="quantity">
+                        <button class="btn decrease"><span>-</span></button>
+                        <div class="qty"><span>0</span></div>
+                        <button class="btn increase"><span>+</span></button>
+                    </div>
+                    <div class="button">
+                        <button class="btn me-2 ps-4 pe-4"><i class="bi bi-cart3 me-3"></i>Add to cart</button>
+                        <button class="btn ps-3 pe-3"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="number-orders">
+                        <i class="bi bi-cart3 me-2"></i>
+                        10 people have added this product to their cart
+                    </div>
+                    <div class="help">
+                        <i class="bi bi-info-circle-fill"></i>
+                        <div class="help-txt">
+                            <p>If you need help or ask about information contact us</p>
+                            <h6>Or fast contact call to this <span>0123456789</span></h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- more info -->
+                <div class="info">
+                    <div class="row">
+                        <div class="col-3">
+                            Author
+                        </div>
+                        <div class="col-9">
+                            Meach sokhai
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            Category
+                        </div>
+                        <div class="col-9">
+                            Action
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            Publish date
+                        </div>
+                        <div class="col-9">
+                            10-Oct-2024
+                        </div>
+                    </div>
+                </div>
+                <!-- pros from us -->
+                <div class="pros">
+                    <div>
+                        <i class="bi bi-check-circle me-3"></i>
+                        <span>Free shipping on all orders over $100</span>
+                    </div>
+                    <div>
+                        <i class="bi bi-check-circle me-3"></i>
+                        <span>14 days easy refund & returns</span>
+                    </div>
+                    <div>
+                        <i class="bi bi-check-circle me-3"></i>
+                        <span>Product taxes and customs duties included</span>
+                    </div>
+                </div>
+                <!-- payment method -->
+                <div class="payment-method">
+                    <div class="row">
+                        <div class="col-3">
+                            Payment method
+                        </div>
+                        <div class="col-9">
+                            <div class="bank">
+                                <img src="https://play-lh.googleusercontent.com/WU6sZMD1UspzwqYnlACtmN60rckp8hoINSgsR21mKLJBbsHPwXtzwvOocpjC7FcO1g" alt="">
+                            </div>
+                            <div class="bank">
+                                <img src="https://assets.weforum.org/organization/image/oW42OTEcgNgP2WDuDnO38N1bnVQcAeYm7TnLJlxF0OE.jpg" alt="">
+                            </div>
+                            <div class="bank">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfHegmPP6NiwrwAeVMelNsNGwuFhXgjYfTTQ&s" alt="">
+                            </div>
+                            <div class="bank">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrWXGDW65mRC-ef6y4SIDWOg7pUPJrlVmNqA&s" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end::detail info -->
+
+<!-- start reviews -->
+<section class="reviews">
+    <ul class="menu">
+        <li (click)="toggleReviewsBox(1)" class="active" #list1>Description</li>
+        <li (click)="toggleReviewsBox(2)" #list2>Reviews</li>
+        <li (click)="toggleReviewsBox(3)" #list3>FAQ</li>
+    </ul>
+    <div class="menu-info">
+        <div class="description" [style.display]="display1">
+            <h5>Your Personal Assistant</h5>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, sed? Accusantium quae sequi quisquam at sapiente. Totam magnam ad voluptate iusto nulla facere nesciunt! Iste maiores nesciunt adipisci beatae veritatis!</p>
+            <h5>Your Personal Assistant</h5>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, facilis illum molestiae placeat esse minus quisquam mollitia fugit ut dicta, alias provident obcaecati omnis itaque at necessitatibus recusandae reprehenderit similique?
+            Deserunt, incidunt illum nulla totam at esse ut nisi sit repudiandae quia nemo vel ratione dolores, alias ipsum deleniti commodi saepe adipisci! Hic asperiores id ex porro quis, dolore repudiandae.</p>
+            <h5>Your Personal Assistant</h5>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime itaque beatae at. Incidunt, porro facere. Atque esse molestiae consequatur obcaecati quam iusto hic reprehenderit aspernatur, maiores tempora dolores doloribus repudiandae.
+            Blanditiis veritatis quo et velit impedit quia porro quam minus deserunt, veniam a neque quibusdam alias ducimus, suscipit reprehenderit distinctio officia totam similique cum illo quas nobis. Iusto, eaque labore?
+            Quibusdam tempore aperiam culpa sequi sint eum fugit harum reprehenderit error dignissimos esse ullam rerum aliquam accusamus odio atque nihil, quasi eius saepe et odit sunt id adipisci? Rem, sint.
+            Illo magni sunt optio dolorum quis magnam porro quasi esse aliquid sapiente fugiat rerum similique, molestias deleniti! Optio magnam vero in natus, sunt, quod laboriosam sequi accusantium obcaecati qui molestias?</p>
+        </div>
+        <div class="review" [style.display]="display2">
+            <h5 class="mb-4">1 review</h5>
+            <div class="reviewers">
+                <div class="reviewer">
+                    <div class="img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9hDqW6flcNwH0PixV1VTbBl6mY_KEb__sQA&s" alt="">
+                    </div>
+                    <div class="comment">
+                        <h6>Meach Sokhai</h6>
+                        <p class="mt-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias magnam explicabo animi enim odio reprehenderit, fugit totam ex aperiam</p>
+                        <div class="star">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h5 class="mt-3 mb-3">Add yours</h5>
+            <p class="ms-3">Your rating *</p>
+            <div class="star ms-3">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+            </div>
+            <p class="ms-3 mt-3">Your review *</p>
+            <textarea class="ms-3 comment-text" name="" id=""></textarea>
+            <button class="btn btn-dark mt-3 ms-3" style="width: fit-content;">Submit</button>
+        </div>
+        <div class="faq" [style.display]="display3">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://xtratheme.com/wp-content/uploads/2024/04/faq.jpg" alt="">
+                </div>
+                <ul class="col-md-8">
+                    <li>
+                        <span>What payments method do you accept?</span>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, eveniet perspiciatis blanditiis at enim veniam laboriosam sed id fugiat, quibusdam nobis. Dolor sapiente earum id iusto doloremque blanditiis voluptate magni!</p>
+                    </li>
+                    <li>
+                        <span>What payments method do you accept?</span>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid quas veniam labore facilis quo magnam dolorem vitae eveniet excepturi, enim nesciunt consectetur corporis? Consequatur, obcaecati impedit culpa dignissimos vero natus.
+                        Minima autem quidem eos facilis officia, voluptatibus nam libero quas repudiandae dolor, pariatur in iure provident est. Tempora, pariatur sed delectus ad dignissimos saepe sit eveniet voluptatibus, voluptate esse repellendus.
+                        Error molestiae, laborum dolores aspernatur adipisci id veritatis dolorum officia nihil suscipit accusamus, mollitia reprehenderit. Aspernatur nesciunt eum laudantium sed exercitationem nam, consequatur sit, consectetur, quasi molestias facere accusantium aliquid.</p>
+                    </li>
+                    <li>
+                        <span>What payments method do you accept?</span>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid quas veniam labore facilis quo magnam dolorem vitae eveniet excepturi, enim nesciunt consectetur corporis? Consequatur, obcaecati impedit culpa dignissimos vero natus.
+                        Minima autem quidem eos facilis officia, voluptatibus nam libero quas repudiandae dolor, pariatur in iure provident est. Tempora, pariatur sed delectus ad dignissimos saepe sit eveniet voluptatibus, voluptate esse repellendus.
+                        Error molestiae, laborum dolores aspernatur adipisci id veritatis dolorum officia nihil suscipit accusamus, mollitia reprehenderit. Aspernatur nesciunt eum laudantium sed exercitationem nam, consequatur sit, consectetur, quasi molestias facere accusantium aliquid.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end::reviews -->
+
+<!-- start ralated products -->
+<section class="ralated-products">
+    <div class="ralated">
+        <!-- title -->
+        <div class="title-box">
+            <h5>Ralated products</h5>
+        </div>
+        <!-- ralated card wrapper -->
+        <div class="wrapper">
+            
+        </div>
+    </div>
+</section>
+<!-- end::ralated products -->

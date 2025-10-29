@@ -8,6 +8,7 @@ import { Home } from './home/home';
 import { Bookpage } from './bookpage/bookpage';
 import { Authorpage } from './authorpage/authorpage';
 import { Categorypage } from './categorypage/categorypage';
+import { Detail } from './detail/detail';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,6 +16,7 @@ export const routes: Routes = [
     {path: 'book', component: Bookpage},
     {path: 'author', component: Authorpage},
     {path: 'category', component: Categorypage},
+    {path: 'detail', component: Detail},
     {path: 'dashboard', component: Dashboard,
         children: [
             {path: '', redirectTo: 'books', pathMatch: 'full'},

@@ -2,6 +2,8 @@ import { Component, signal } from '@angular/core';
 import { Card } from '../card/card';
 import { Book } from '../Models/Book';
 import { Bookservice } from '../Services/bookservice';
+import { Authorservice } from '../Services/authorservice';
+import { Author } from '../Models/Author';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +13,11 @@ import { Bookservice } from '../Services/bookservice';
 })
 export class Home {
   books = signal<Book[]>([]);
-  constructor(private bookservice: Bookservice){}
+  authors = signal<Author[]>([]);
+  constructor(private bookservice: Bookservice, private authorservice: Authorservice){}
   ngOnInit(): void{
     this.GetAll();
+    this.GetAuthors();
   }
 
   // get all books
@@ -22,5 +26,9 @@ export class Home {
       this.books.set(re)
 
     });
+  }
+  // get authors
+  GetAuthors(){
+    this.authorservice.GetAllAuthors().subscribe((res: any) => {this.authors.set(res)});
   }
 }

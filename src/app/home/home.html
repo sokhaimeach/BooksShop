@@ -17,7 +17,7 @@
 
 <!-- start categories list -->
 <section class="categories-list">
-    <div class="categories-title">
+    <div class="categories-title" style="margin-top: 0px;">
         <hr>
         <div>Categories</div>
         <hr>
@@ -38,7 +38,7 @@
         </div>
         <div class="div2 collection">
             <div class="title-and-btn">
-                <h3 class="collection-title">Action and Adventure.</h3>
+                <h3 class="collection-title">Collection 2</h3>
                 <button class="btn collection-btn">
                     <div class="circle"><i class="bi bi-chevron-right"></i></div>
                     View collection
@@ -50,7 +50,7 @@
         </div>
         <div class="div3 collection">
             <div class="title-and-btn">
-                <h3 class="collection-title">Action and Adventure.</h3>
+                <h3 class="collection-title">Collection 3</h3>
                 <button class="btn collection-btn">
                     <div class="circle"><i class="bi bi-chevron-right"></i></div>
                     View collection
@@ -62,7 +62,7 @@
         </div>
         <div class="div4 collection">
             <div class="title-and-btn">
-                <h3 class="collection-title">Action and Adventure.</h3>
+                <h3 class="collection-title">Collection 4</h3>
                 <button class="btn collection-btn">
                     <div class="circle"><i class="bi bi-chevron-right"></i></div>
                     View collection
@@ -74,7 +74,7 @@
         </div>
         <div class="div5 collection">
             <div class="title-and-btn">
-                <h3 class="collection-title">Action and Adventure.</h3>
+                <h3 class="collection-title">Collection 5</h3>
                 <button class="btn collection-btn">
                     <div class="circle"><i class="bi bi-chevron-right"></i></div>
                     View collection
@@ -89,5 +89,38 @@
 <!-- end::categories list -->
 
 <!-- start best seller -->
+ <div class="categories-title">
+    <hr>
+    <div>Books</div>
+    <hr>
+</div>
+<h1>Best seller</h1>
 <app-card class="app-cards" [Items]="books()"></app-card>
 <!-- end::best seller -->
+
+<!-- start authors -->
+<section class="authors">
+    <div class="categories-title">
+        <hr>
+        <div>Authors</div>
+        <hr>
+    </div>
+    <h1>Most popular authors</h1>
+    <div class="authors-list">
+        @for(au of authors(); track $index){
+        <div class="cards">
+            <div class="img">
+                <img [src]="au.imageUrl" alt="">`
+            </div>
+            <div class="media">
+                <div class="media-box">
+                    <i class="bi bi-facebook"></i>
+                </div>
+            </div>
+            <h2>{{au.name}}</h2>
+            <p>{{au.bio}}</p>
+        </div>
+        }
+    </div>
+</section>
+<!-- end::authors -->

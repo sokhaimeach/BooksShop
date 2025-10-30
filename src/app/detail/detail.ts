@@ -1,13 +1,50 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, signal, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Card } from '../card/card';
+import { Book } from '../Models/Book';
+import { Bookservice } from '../Services/bookservice';
 
 @Component({
   selector: 'app-detail',
-  imports: [RouterLink],
+  imports: [RouterLink, Card],
   templateUrl: './detail.html',
   styleUrl: './detail.css'
 })
 export class Detail {
+  books = signal<Book[]>([]);
+  @ViewChild('slider') slider!: ElementRef<HTMLDivElement>;
+  constructor(private bookservice: Bookservice){}
+  ngOnInit(): void{
+    this.GetBookDetail();
+  }
+  // get all books
+  GetBookDetail() {
+    this.bookservice.GetAllBook().subscribe((re: any) => {
+      this.books.set(re);
+    });
+  }
+
+  scrollLeft() {
+    const s = this.slider.nativeElement.children[0] as HTMLElement;
+    let child = s.getElementsByClassName('card');
+    for (let i = 0; i < child.length; i++) {
+      let element = child[i] as HTMLElement;
+      element.style.scrollSnapAlign = 'start';
+    }
+    const childWhith = s.getElementsByClassName('card')[0] as HTMLElement;
+    s.scrollBy({ left: -(childWhith.clientWidth ), behavior: 'smooth' });
+  }
+
+  scrollRight() {
+    const s = this.slider.nativeElement.children[0] as HTMLElement;
+    let child = s.getElementsByClassName('card');
+    for (let i = 0; i < child.length; i++) {
+      let element = child[i] as HTMLElement;
+      element.style.scrollSnapAlign = 'end';
+    }
+    const childWhith = s.getElementsByClassName('card')[0] as HTMLElement;
+    s.scrollBy({ left: (childWhith.clientWidth ), behavior: 'smooth' });
+  }
 
   // toggle reviews box
   @ViewChild('list1') list1!: ElementRef<HTMLElement>;

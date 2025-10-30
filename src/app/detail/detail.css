@@ -334,6 +334,7 @@
     width: 100%;
     padding-left: 50px;
     padding-right: 50px;
+    margin-bottom: 50px;
 }
 .ralated{
     background-color: var(--bg-secondary-color);
@@ -352,4 +353,61 @@
 .title-box h5{
     color: var(--text-white-color);
     font-weight: 700;
+}
+
+/* start .slider */
+
+.slider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.slider app-card{
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    gap: 30px;
+    margin-top: 20px;
+    width: calc(100vw - 160px);
+    scrollbar-width: none;      /* Firefox */
+    -ms-overflow-style: none; 
+}
+
+.slider app-card::-webkit-scrollbar {
+  display: none;
+}
+
+/* Optional: arrow style */
+.arrow {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  /* user-select: none; */
+  color: var(--text-white-color);
+  z-index: 5;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: var(--bg-primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.181);
+  transition: all 0.1s ease;
+}
+.arrow:hover {
+    transform: scale(1.1);
+}
+.arrow:active {
+    transform: scale(1);
+}
+.left{
+    left: -20px;
+}
+.right {
+    right: -20px;
 }

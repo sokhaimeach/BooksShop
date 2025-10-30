@@ -4,6 +4,7 @@
     margin-bottom: 20px;
     width: calc(25% - 23px);
     transition: all 0.3s ease-in-out;
+    flex: 0 0 auto; /* ❗ don't shrink, keep natural width */
 }
 .card img {
     border-top-left-radius: 40px;

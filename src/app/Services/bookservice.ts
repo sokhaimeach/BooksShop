@@ -32,4 +32,12 @@ export class Bookservice {
   GetBooksByCategory(category: string){
     return this.http.get(this.url + 'GetBooksByCategory/' + category);
   }
+
+  GetBookById(id: string){
+    return this.http.get(this.url + 'GetOneBook/' + id);
+  }
+
+  GetBooksByUserFav(userId: string){
+    return this.http.get(this.url + 'GetByUserFav/' + userId);
+  }
 }

@@ -62,10 +62,20 @@
         <span class="visually-hidden">New alerts</span>
       </span>
     </button>
-    <!-- button login -->
-    <button class="btn login ms-2">Login</button>
-    <!-- button register -->
-    <button class="btn register ms-2 me-5">Register</button>
+    @if(loginId() == ''){
+      <!-- button login -->
+      <button class="btn login ms-2" data-bs-toggle="modal" data-bs-target="#exampleModalLogin" (click)="toggleForm(login, register, emailLogin, 1)">Login</button>
+      <!-- button register -->
+      <button class="btn register ms-2 me-5" data-bs-toggle="modal" data-bs-target="#exampleModalLogin" (click)="toggleForm(login, register, emailLogin, 2)">Register</button>
+    } @else{
+        <!-- admin page -->
+        @if(loginRole() == 'Admin'){
+        <button class="btn login ms-2" routerLink="/dashboard"><i class="bi bi-speedometer"></i></button>
+        }
+      <!-- logout -->
+    <button class="btn register ms-2 me-5" (click)="logout()">Logout<i class="bi bi-box-arrow-right ms-2"></i></button>
+    }
+    <!-- hidden menu -->
     <button class="btn btn-sm menu-list ms-2 me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
       <i class="fa fa-list"></i>
     </button>
@@ -123,6 +133,58 @@
   </div>
 </div>
 <!-- end::search off canvas -->
+
+<!-- start login and register modal -->
+<div class="modal fade" id="exampleModalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-radius">
+      <!-- <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body" style="margin: 70px;">
+        <button type="button" class="btn-close btn-close-p" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="parent-form">
+
+          <!-- login -->
+          <div class="login-modal" #login>
+            <h4>Login</h4>
+            <input class="w-100 cus-input" #loginName name="username" type="text" placeholder="User name" />
+            <input class="w-100 cus-input" #loginPass name="password" type="text" placeholder="Password" />
+            <span class="alerts-wrong" #alert>Username or password is not correct, please try again</span>
+            <button type="button" class="btn login login-btn" (click)="checkLogin(loginName, loginPass, alert)">Login</button>
+            <p class="mt-4" (click)="toggleForm(login, register, emailLogin, 5)">Forgot your password? Get help</p>
+            <p (click)="toggleForm(login, register, emailLogin, 4)">Not registered? Create an account.</p>
+          </div>
+          <!-- register -->
+          <div class="login-modal" #register>
+            <h4>Register</h4>
+            <input class="w-100 cus-input" name="reusername" type="text" placeholder="User name" />
+            <input class="w-100 cus-input" name="repassword" type="password" placeholder="Password" />
+            <input class="w-100 cus-input" name="email" type="text" placeholder="Email@gmail.com" />
+            <input class="w-100 cus-input" name="img_url" type="text" placeholder="Image url" />
+            <span class="alerts-wrong"></span>
+            <button type="button" class="btn login login-btn" (click)="Register(register)">Register</button>
+            <p class="mt-4" (click)="toggleForm(login, register, emailLogin, 3)">Already registered? Login</p>
+          </div>
+          <!-- login by email -->
+          <div class="login-modal" #emailLogin>
+            <h4>Login by Email</h4>
+            <input class="w-100 cus-input" #email name="email" type="text" placeholder="YourEmail@gmail.com" />
+            <span class="alerts-wrong" #alertemail></span>
+            <button type="button" class="btn login login-btn" (click)="LoginByEmail(email, alertemail)">Login</button>
+            <p class="mt-4" (click)="toggleForm(login, register, emailLogin, 3)">Already registered? Login</p>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- end::login and register modal -->
 
 <router-outlet />
 

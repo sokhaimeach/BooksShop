@@ -59,6 +59,7 @@
     font-size: 14px;
     cursor: pointer;
     transition: all 0.2s ease;
+    user-select: none;
 }
 .review-info span:hover{
     color: var(--text-secondary-color);
@@ -271,6 +272,7 @@
     position: relative;
     display: flex;
     justify-content: end;
+    margin-bottom: 10px;
 }
 .reviewer .img{
     width: 50px;
@@ -410,4 +412,10 @@
 }
 .right {
     right: -20px;
+}
+
+
+.rating-star {
+    font-size: 20px;
+    cursor: pointer;
 }

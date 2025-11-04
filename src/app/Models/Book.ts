@@ -1,3 +1,5 @@
+import { Author } from "./Author";
+
 export interface Book{
     id: string;
     title: string;
@@ -27,4 +29,25 @@ export interface RealBook{
     publishDate: string;
     favorite: string[];
     reviews: Review[];
+}
+
+export interface BookDetail{
+    id: string;
+    title: string;
+    price: number;
+    category: string;
+    imageUrl: string;
+    description: string;
+    publishDate: string;
+    favorite: string[];
+    authorInfo: Author;
+    reviewerInfo: Reviewer[];
+}
+
+export interface Reviewer{
+    id: string;
+    name: string;
+    imageUrl: string;
+    rate: number;
+    comment: string;
 }

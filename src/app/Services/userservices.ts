@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class Userservices {
   private url: string = 'http://localhost:5256/api/User/';
+    loginId: string = '';
   constructor(private http: HttpClient){}
 
   GetAllUsers(){
@@ -22,5 +23,13 @@ export class Userservices {
 
   UpdateUser(user: any){
     return this.http.put(this.url + 'UpdateUser', user);
+  }
+
+  Login(id: string){
+    this.loginId = id; 
+  }
+
+  GetId(){
+    return this.loginId;
   }
 }

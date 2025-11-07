@@ -44,23 +44,25 @@
       <i class="bi bi-search"></i>
     </button>
     <!-- button add to cart -->
-    <button type="button" class="btn position-relative btn-sm btn-cart">
+    <button type="button" routerLink="/cart" class="btn position-relative btn-sm btn-cart">
       <i class="bi bi-bag-fill"></i>
       <span
         class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
       >
-        0
+        {{cart.bookCart().length}}
         <span class="visually-hidden">unread messages</span>
       </span>
     </button>
     <!-- button add to favorite -->
-    <button type="button" class="btn btn-sm position-relative btn-cart ms-2">
+    <button type="button" routerLink="/wishlist" class="btn btn-sm position-relative btn-cart ms-2">
       <i class="bi bi-bookmark-heart-fill"></i>
+      @if(fav.books().length > 0){
       <span
         class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"
       >
         <span class="visually-hidden">New alerts</span>
       </span>
+      }
     </button>
     @if(loginId() == ''){
       <!-- button login -->

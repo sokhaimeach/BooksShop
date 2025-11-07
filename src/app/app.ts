@@ -3,6 +3,8 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { Userservices } from './Services/userservices';
 import { User } from './Models/User';
 import { empty } from 'rxjs';
+import { Cartservice } from './Services/cartservice';
+import { Favservice } from './Services/favservice';
 declare let Swal: any;
 
 @Component({
@@ -23,7 +25,7 @@ export class App {
     'Comic Book',
     'Action',
   ];
-  constructor(private userservice: Userservices){}
+  constructor(private userservice: Userservices, public cart: Cartservice, public fav: Favservice){}
   ngOnInit(): void{
     this.GetUsers();
     try{

@@ -1,0 +1,83 @@
+<!-- start banner -->
+<section class="banner">    
+    <h3>Cart</h3>
+    <div class="position">
+        <i class="bi bi-house-fill me-2" style="cursor: pointer" routerLink="/"></i>
+        <i class="bi bi-chevron-right me-2"></i>
+        <span style="color: var(--text-secondary-color)">Cart</span>
+  </div>
+</section>
+<!-- end::banner -->
+
+<!-- start progress step -->
+<!-- <section class="progress">
+
+</section> -->
+<!-- end::progress step -->
+
+<!-- start cart table -->
+@if(cart.bookCart().length > 0){
+<section class="dispaly-cart">
+    <table class="table align-middle table-bordered">
+        <thead>
+            <tr>
+                <th class="tbl-product">Product</th>
+                <th class="tbl-price">Price</th>
+                <th class="tbl-quantity">Quantity</th>
+                <th class="tbl-subtotal">Subtotal</th>
+                <th class="tbl-remove"></th>
+            </tr>
+            </thead>
+        <tbody>
+            @for(book of cart.bookCart(); track $index){
+            <tr>
+                <td class="d-flex align-items-center tbl-product">
+                    <div class="img me-3"
+                        style="width:70px; height:70px; overflow:hidden; display:flex; align-items:center; justify-content:center; cursor: pointer;">
+                        <img [src]="book.imageUrl" alt="" style="width:70px;">
+                    </div>
+                    <span class="product-name">{{book.title}}</span>
+                </td>
+                <td class="tbl-price">{{book.price | currency}}</td>
+                <!-- Quantity -->
+                <td class="tbl-quantity">
+                    <div class="quantity">
+                        <button class="btn decrease" (click)="cart.Decrease(book.id)"><span>-</span></button>
+                        <div class="qty"><span>{{book.quantity}}</span></div>
+                        <button class="btn increase" (click)="cart.Increase(book.id)"><span>+</span></button>
+                    </div>
+                </td>
+                <!-- Size Selector -->
+                <td class="tbl-subtotal">
+                    {{book.subTotal | currency}}
+                </td>
+                <!-- Remove -->
+                <td class="tbl-remove">
+                    <button class="btn" (click)="cart.DeleteFromCart(book.id)">✕</button>
+                </td>
+            </tr>
+              }
+        </tbody>
+    </table>
+    <!-- total books -->
+    <ul class="list-group">
+        <li class="list-group-item list-head d-flex justify-content-center align-items-center">
+            Total books
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Book quantity
+            <span class="badge text-bg-danger rounded-pill">{{bookQty()}}{{bookQty() <= 1 ? ' book': ' books'}}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Total
+            <span class="badge text-bg-danger rounded-pill">{{totalBookPrice() | currency}}</span>
+        </li>
+    </ul>
+    <button class="btn btn-check-out" (click)="CheckOut()">Check out</button>
+</section>
+} @else {
+<div class="no-wish">
+    <h1 class="no-wishlist-text">No book add to cart yet</h1>
+    <button class="btn" routerLink="/book">Go to shop</button>
+</div>
+}

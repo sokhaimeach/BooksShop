@@ -10,6 +10,7 @@ import { Authorpage } from './authorpage/authorpage';
 import { Categorypage } from './categorypage/categorypage';
 import { Detail } from './detail/detail';
 import { Wishlist } from './wishlist/wishlist';
+import { Cart } from './cart/cart';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,6 +20,7 @@ export const routes: Routes = [
     {path: 'category', component: Categorypage},
     {path: 'detail/:id', component: Detail},
     {path: 'wishlist', component: Wishlist},
+    {path: 'cart', component: Cart},
     {path: 'dashboard', component: Dashboard,
         children: [
             {path: '', redirectTo: 'books', pathMatch: 'full'},

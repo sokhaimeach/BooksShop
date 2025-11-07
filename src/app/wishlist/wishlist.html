@@ -12,9 +12,13 @@
 <!-- end::banner -->
 
 <!-- start show wishlist card -->
-<div class="wish-list" #wishList>
-    <app-card class="app-cards" [Items]="books()"></app-card>
-</div>
-
-<button class="btn btn-danger" (click)="AddDeleteBtn()">View</button>
-
+@if(fav.books().length !== 0){
+  <div class="wish-list" #wishList>
+      <app-card class="app-cards" [Items]="fav.books()"></app-card>
+  </div>
+} @else {
+  <div class="no-wish">
+    <h1 class="no-wishlist-text">You don't have wish list yet</h1>
+    <button class="btn" routerLink="/book">Go to shop</button>
+  </div>
+}

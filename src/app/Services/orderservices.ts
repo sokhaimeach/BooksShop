@@ -11,4 +11,8 @@ export class Orderservices {
   GetAllOrders(){
     return this.http.get(this.url + 'GetAllOrders');
   }
+
+  AddOrders(order: any) {
+    return this.http.post(this.url + 'AddOrder', order);
+  }
 }

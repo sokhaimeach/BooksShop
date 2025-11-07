@@ -36,10 +36,8 @@
               <i class="bi bi-star"></i>
               } }
             </div>
-            @if(bookDetail().reviewerInfo && bookDetail().reviewerInfo.length > 0){
-            <a href="#gotoReview">
-              <span (click)="toggleReviewsBox(2)">({{bookDetail().reviewerInfo.length}} {{this.bookDetail().reviewerInfo.length > 1 ? 'customers': 'customer'}} review)</span>
-            </a>
+            @if(bookDetail().reviewerInfo && bookDetail().reviewerInfo.length > 0 && bookDetail().reviewerInfo[0].id != ''){
+              <span (click)="toggleReviewsBox(2); scrollToReview(gotoReview);">({{bookDetail().reviewerInfo.length}} {{this.bookDetail().reviewerInfo.length > 1 ? 'customers': 'customer'}} review)</span>
             }
           </div>
           <h1 class="price">{{bookDetail().price | currency}}</h1>
@@ -48,15 +46,17 @@
         <!-- add to cart button -->
         <div class="add-to-cart">
           <div class="quantity">
-            <button class="btn decrease"><span>-</span></button>
-            <div class="qty"><span>0</span></div>
-            <button class="btn increase"><span>+</span></button>
+            <button class="btn decrease" (click)="DecreaseQuantyty()"><span>-</span></button>
+            <div class="qty"><span>{{quantity}}</span></div>
+            <button class="btn increase" (click)="IncreaseQuantity()"><span>+</span></button>
           </div>
           <div class="button">
-            <button class="btn me-2 ps-4 pe-4">
+            <button class="btn me-2 ps-4 pe-4" (click)="AddToCartFromDetail()">
               <i class="bi bi-cart3 me-3"></i>Add to cart
             </button>
-            <button class="btn ps-3 pe-3"><i class="bi bi-heart"></i></button>
+            <button class="btn ps-3 pe-3" (click)="toggleDetailHeart()">
+              <i class="bi {{heart()}}"></i>
+            </button>
           </div>
           <div class="number-orders">
             <i class="bi bi-cart3 me-2"></i>
@@ -141,8 +141,7 @@
 <!-- end::detail info -->
 
 <!-- start reviews -->
-<a name="gotoReview"></a>
-<section class="reviews">
+<section class="reviews" #gotoReview>
   <ul class="menu">
     <li (click)="toggleReviewsBox(1)" class="active" #list1>Description</li>
     <li (click)="toggleReviewsBox(2)" #list2>Reviews</li>

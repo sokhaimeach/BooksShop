@@ -5,6 +5,7 @@
         [src]="book.imageUrl"
         class="card-img-top"
         alt="..."
+        [routerLink]="['/detail',book.id]"
     />
     <div class="card-body">
         <h3 class="card-title">{{book.title}}</h3>
@@ -12,19 +13,21 @@
     </div>
     <div class="star-and-price">
         <div class="star">
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star"></i>
+            @for(s of stars; track $index){ @if(s <= averageRating(book)){
+              <i class="bi bi-star-fill"></i>
+              } @else {
+              <i class="bi bi-star"></i>
+              } }
         </div>
         <h3 class="price">${{book.price}}</h3>
     </div>
-    <button class="btn btn-card">
+    <button class="btn btn-card" (click)="cart.AddToCart(book, 1)">
         <i class="bi bi-cart3 me-2"></i> Add to cart
     </button>
     <div class="hidden-btn">
-        <button class="btn btn-hide"><i class="bi bi-heart"></i></button>
+        <button class="btn btn-hide" (click)="fav.ToggleWishList(book)">
+            <i class="bi" [classList]="fav.ToggleIcon(book.favorite)"></i>
+        </button>
         <button class="btn btn-hide" [routerLink]="['/detail',book.id]"><i class="bi bi-search"></i></button>
     </div>
     <button class="btn btn-danger rounded-pill wish-list-btn" (click)="fav.DeleteWishList(book)">

@@ -6,6 +6,8 @@ import { Bookservice } from '../Services/bookservice';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Userservices } from '../Services/userservices';
+import { Favservice } from '../Services/favservice';
+import { Cartservice } from '../Services/cartservice';
 
 @Component({
   selector: 'app-detail',
@@ -16,8 +18,10 @@ import { Userservices } from '../Services/userservices';
 export class Detail {
   books = signal<Book[]>([]);
   bookDetail = signal<BookDetail>({} as BookDetail);
+  heart = signal<string>('bi-heart');
   stars: number[] = [1, 2, 3, 4, 5];
   rating: string[] = ['bi-star', 'bi-star', 'bi-star', 'bi-star', 'bi-star'];
+  quantity: number = 0;
   review: any = {
     userId: '',
     comment: '',
@@ -27,13 +31,20 @@ export class Detail {
   constructor(
     private bookservice: Bookservice,
     private route: ActivatedRoute,
-    public userservice: Userservices) {}
+    public userservice: Userservices,
+    public fav: Favservice,
+    private cart: Cartservice) {}
   ngOnInit(): void {
     this.GetBookDetail();
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
       if (id) {
         this.GetDetail(id);
+        window.scrollTo({top: 0, behavior: 'smooth'});
+        const bookFromCart = this.cart.bookCart().find(b => b.id === id);
+        if (bookFromCart !== undefined){
+          this.quantity = bookFromCart.quantity;
+        } else this.quantity = 0;
       }
     });
   }
@@ -41,7 +52,12 @@ export class Detail {
   GetDetail(id: string) {
     this.bookservice.GetBookById(id).subscribe((re: any) => {
       this.bookDetail.set(re);
-      console.log(this.bookDetail())
+      const ishave = this.bookDetail().favorite.find((b: any) => b === this.userservice.GetId()) || null;
+        if(ishave !== null){
+          this.heart.set('bi-heart-fill text-danger');
+        } else{
+          this.heart.set('bi-heart');
+        }
     });
   }
 
@@ -77,7 +93,35 @@ export class Detail {
     if(this.review.comment === '' || this.review.rate === 0){
       alert('Please enter your review comment.');
       return;
+    }   
+    this.bookservice.UpdateBook(this.updateBook()).subscribe((re: any) => {
+      console.log('Your review has been added successfully.');
+      this.GetDetail(this.bookDetail().id);
+      this.review = {
+        userId: this.userservice.GetId(),
+        comment: '',
+        rate: 0
+      };
+      this.fillRating(0);
+    });
+  }
+
+  // set rating stars
+  fillRating(rate: number) {
+    for (let i = 0; i < this.rating.length; i++) {
+      if (i < rate) {
+        this.rating[i] = 'bi-star-fill';
+      } else {
+        this.rating[i] = 'bi-star';
+      }
     }
+  }
+  setRating(rate: number) {
+    this.review.rate = rate;
+  }
+
+  // update book
+  updateBook(): any{
     let revs: any[] = [];
     for(let i = 0; i < this.bookDetail().reviewerInfo.length; i++){
       if(this.bookDetail().reviewerInfo[i].id !== ''){
@@ -102,38 +146,55 @@ export class Detail {
       favorite: this.bookDetail().favorite,
       reviews: revs,
     };
-    console.log(revs);
-    
-    this.bookservice.UpdateBook(item).subscribe((re: any) => {
-      console.log('Your review has been added successfully.');
-      this.GetDetail(this.bookDetail().id);
-      this.review = {
-        userId: '68f5267c6a55b63b7064efe8',
-        comment: '',
-        rate: 0
-      };
-      this.fillRating(0);
-    });
+    return item;
+  }
+  // add to cart 
+  AddToCartFromDetail(){
+    if(this.quantity===0){
+      this.quantity++;
+    }
+    this.cart.AddToCart(this.updateBook(), this.quantity);
   }
 
-  // set rating stars
-  fillRating(rate: number) {
-    for (let i = 0; i < this.rating.length; i++) {
-      if (i < rate) {
-        this.rating[i] = 'bi-star-fill';
-      } else {
-        this.rating[i] = 'bi-star';
-      }
+  // increase quantity
+  IncreaseQuantity(){
+    this.quantity++;
+    this.cart.Increase(this.bookDetail().id);
+    const bookFromCart = this.cart.bookCart().find(b => b.id === this.bookDetail().id);
+    if (bookFromCart !== undefined){
+      this.quantity = bookFromCart.quantity;
     }
   }
-  setRating(rate: number) {
-    this.review.rate = rate;
+  // decrease quantyty
+  DecreaseQuantyty() {
+    this.quantity--;
+    if(this.quantity <= 0){
+      this.quantity = 0;
+      this.cart.DeleteFromCart(this.bookDetail().id);
+      return;
+    }
+    this.cart.Decrease(this.bookDetail().id);
+    const bookFromCart = this.cart.bookCart().find(b => b.id === this.bookDetail().id);
+    if (bookFromCart !== undefined){
+      this.quantity = bookFromCart.quantity;
+    }
   }
 
 
 
 
+  // toggle detail heart
+  toggleDetailHeart(){
+    this.fav.ToggleWishList(this.updateBook());
+    setTimeout(() => {
+      this.GetDetail(this.bookDetail().id)
+    }, 50);
+  }
 
+  // scroll to review section
+  scrollToReview(element: HTMLElement){
+    element.scrollIntoView({behavior: 'smooth', block: 'nearest'})
+  }
 
 
   scrollLeft() {

@@ -9,6 +9,7 @@
 .card img {
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
+    cursor: pointer;
 }
 .card:hover {
     border: 1px solid var(--bg-primary-color);

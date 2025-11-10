@@ -11,6 +11,7 @@ import { Categorypage } from './categorypage/categorypage';
 import { Detail } from './detail/detail';
 import { Wishlist } from './wishlist/wishlist';
 import { Cart } from './cart/cart';
+import { Contact } from './contact/contact';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +19,7 @@ export const routes: Routes = [
     {path: 'book', component: Bookpage},
     {path: 'author', component: Authorpage},
     {path: 'category/:category', component: Categorypage},
+    {path: 'contact', component: Contact},
     {path: 'detail', component: Detail},
     {path: 'wishlist', component: Wishlist},
     {path: 'cart', component: Cart},

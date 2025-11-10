@@ -100,6 +100,24 @@
         margin-right: 20px;
     }
 }
+@media(max-width: 550px){
+    .hero-text {
+        padding: 50px 20px 50px 20px;
+    }
+}
+@media(max-width: 490px){
+    .hero-text h1{
+        font-size: 36px;
+    }
+    .hero-text p{
+        font-size: 18px;
+    }
+}
+@media(max-width: 444px){
+    .hero-text p{
+        font-size: 16px;
+    }
+}
 
 /* categories list */
 .categories-list{
@@ -146,9 +164,11 @@ hr {
 .div1 {
     grid-column: span 4 / span 4;
     grid-row: span 4 / span 4;
-    background-color: black;
     border-radius: 20px;
     overflow: hidden;
+}
+.div1 .img {
+    align-items: center !important;
 }
 .collection{
     position: relative;
@@ -158,18 +178,16 @@ hr {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
 }
 .collection .img img {
     width: 100%;
-    opacity: 50%;
 }
 
 .div2 {
     grid-column: span 3 / span 3;
     grid-row: span 2 / span 2;
     grid-column-start: 5;
-    background-color: black;
     border-radius: 20px;
     overflow: hidden;
 }
@@ -178,7 +196,6 @@ hr {
     grid-column: span 3 / span 3;
     grid-row: span 2 / span 2;
     grid-column-start: 8;
-    background-color: black;
     border-radius: 20px;
     overflow: hidden;
 }
@@ -188,7 +205,6 @@ hr {
     grid-row: span 2 / span 2;
     grid-column-start: 5;
     grid-row-start: 3;
-    background-color: black;
     border-radius: 20px;
     overflow: hidden;
 }
@@ -198,14 +214,13 @@ hr {
     grid-row: span 2 / span 2;
     grid-column-start: 9;
     grid-row-start: 3;
-    background-color: black;
     border-radius: 20px;
     overflow: hidden;
 }
        
 .title-and-btn{
     position: absolute;
-    top: 50px;
+    top: 20px;
     left: 20px;
     z-index: 1;
 }
@@ -256,6 +271,7 @@ hr {
 .authors{
     padding-left: 50px;
     padding-right: 50px;
+    margin-bottom: 30px;
 }
 .authors-list{
     display: flex;
@@ -266,6 +282,10 @@ hr {
 .authors-list .cards{
     width: 300px; 
     position: relative;
+    transition: all 0.2s ease;
+}
+.authors-list .cards:hover{
+    transform: scale(1.1);
 }
 .authors-list .cards .img{
     width: 300px;
@@ -276,6 +296,7 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 .authors-list .img img {
     width: 310px;
@@ -306,11 +327,18 @@ hr {
 .media-box:hover{
     transform: scale(1.1);
 }
+.media-box:active {
+    transform: scale(1);
+}
 .cards h2{
     font-family: var(--font-family);
     font-weight: 700;
     text-align: center;
     margin-top: 30px;
+    cursor: pointer;
+}
+.cards h2:hover {
+    color: var(--text-secondary-color);
 }
 .cards p{
     font-family: var(--font-family);
@@ -428,5 +456,51 @@ hr {
     .authors-list {
         gap: none;
         justify-content: space-between !important;
+    }
+}
+@media (max-width: 530px){
+    .authors-list .cards{
+        width: 120px;
+    }
+    .authors-list .cards .img {
+        width: 120px;
+        height: 120px;
+    }
+    .authors-list .cards .img img{
+        width: 130px;
+    }
+    .media{
+        top: 95px;
+    }
+    .cards h2{
+        font-size: 18px;
+    }
+    .cards p{
+        font-size: 14px;
+    }
+}
+@media (max-width: 440px){
+    .authors-list .cards{
+        width: 100px;
+    }
+    .authors-list .cards .img {
+        width: 100px;
+        height: 100px;
+    }
+    .authors-list .cards .img img{
+        width: 110px;
+    }
+    .media{
+        top: 75px;
+    }
+    .media .media-box {
+        width: 40px;
+        height: 40px;
+    }
+    .cards h2{
+        font-size: 18px;
+    }
+    .cards p{
+        font-size: 14px;
     }
 }

@@ -40,4 +40,12 @@ export class Bookservice {
   GetBooksByUserFav(userId: string){
     return this.http.get(this.url + 'GetByUserFav/' + userId);
   }
+
+  GetMostSellBook(){
+    return this.http.get(this.url + 'GetBestSeller');
+  }
+
+  GetRelateProduct(id: string, cate: string){
+    return this.http.get(this.url + 'GetRelated/' + id + '/' + cate);
+  }
 }

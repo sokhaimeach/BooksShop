@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { Card } from '../card/card';
 import { Book } from '../Models/Book';
 import { Bookservice } from '../Services/bookservice';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-authorpage',
@@ -11,14 +12,21 @@ import { Bookservice } from '../Services/bookservice';
 })
 export class Authorpage {
   books = signal<Book[]>([]);
-  constructor(private bookservice: Bookservice){}
+  activeAuthor: string = '';
+  constructor(private bookservice: Bookservice, private route: ActivatedRoute){}
 
   ngOnInit(): void{
-    this.GetAllBooks();
+    this.route.queryParams.subscribe(params => {
+      const id = params['id'];
+      this.activeAuthor = params['name'];
+      if(id){
+        this.GetBookByAuthorId(id);
+      }
+    });
   }
 
-  GetAllBooks(){
-    this.bookservice.GetBooksByAuthorId('68fad80a2e612453d59bb940').subscribe((re: any) => {
+  GetBookByAuthorId(id: string){
+    this.bookservice.GetBooksByAuthorId(id).subscribe((re: any) => {
       this.books.set(re);
     });
   }

@@ -1,20 +1,22 @@
 import { Component, ElementRef, signal, ViewChild } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Userservices } from './Services/userservices';
 import { User } from './Models/User';
-import { empty } from 'rxjs';
 import { Cartservice } from './Services/cartservice';
 import { Favservice } from './Services/favservice';
+import { Authorservice } from './Services/authorservice';
+import { Author } from './Models/Author';
 declare let Swal: any;
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected title = 'BookShop';
+  authors = signal<Author[]>([]);
   users: User[] = [];
   loginId = signal('');
   loginRole = signal('');
@@ -25,9 +27,10 @@ export class App {
     'Comic Book',
     'Action',
   ];
-  constructor(private userservice: Userservices, public cart: Cartservice, public fav: Favservice){}
+  constructor(private userservice: Userservices, public cart: Cartservice, public fav: Favservice, private authorservice: Authorservice){}
   ngOnInit(): void{
     this.GetUsers();
+    this.GetAuthors();
     try{
       this.loginId.set(sessionStorage.getItem('loginId') || '');
       this.userservice.Login(this.loginId());
@@ -42,6 +45,10 @@ export class App {
   // get all users
   GetUsers() {
     this.userservice.GetAllUsers().subscribe((res: any) => {this.users = res; console.log(this.users)});
+  }
+  // get authors
+  GetAuthors(){
+    this.authorservice.GetAllAuthors().subscribe((res: any) => {this.authors.set(res)});
   }
   // check login
   @ViewChild('loginName') inputName!: ElementRef <HTMLInputElement>;

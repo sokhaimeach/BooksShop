@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { Book } from '../Models/Book';
 import { Bookservice } from '../Services/bookservice';
 import { Card } from '../card/card';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-categorypage',
@@ -12,14 +12,21 @@ import { RouterLink } from '@angular/router';
 })
 export class Categorypage {
   books = signal<Book[]>([]);
-  constructor(private bookservice: Bookservice){}
+  activePage: string = '';
+  constructor(private bookservice: Bookservice, private route: ActivatedRoute){}
 
   ngOnInit(): void{
-    this.GetAllBooks();
+    this.route.paramMap.subscribe((params) => {
+      const category = params.get('category');
+      if(category){
+        this.GetAllBooks(category);
+        this.activePage = category;
+      }
+    })
   }
 
-  GetAllBooks(){
-    this.bookservice.GetBooksByCategory('Historical').subscribe((re: any) => {
+  GetAllBooks(category: string){
+    this.bookservice.GetBooksByCategory(category).subscribe((re: any) => {
       this.books.set(re);
     });
   }

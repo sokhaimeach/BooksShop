@@ -35,10 +35,11 @@ export class Detail {
     public fav: Favservice,
     private cart: Cartservice) {}
   ngOnInit(): void {
-    this.GetBookDetail();
-    this.route.paramMap.subscribe((params) => {
-      const id = params.get('id');
+    this.route.queryParams.subscribe((params) => {
+      const id = params['id'];
+      const category = params['category'];
       if (id) {
+        this.GetRelatedBooks(id, category);
         this.GetDetail(id);
         window.scrollTo({top: 0, behavior: 'smooth'});
         const bookFromCart = this.cart.bookCart().find(b => b.id === id);
@@ -47,6 +48,10 @@ export class Detail {
         } else this.quantity = 0;
       }
     });
+    // this.route.paramMap.subscribe((params) => {
+    //   const id = params.get('id');
+      
+    // });
   }
   // get book details
   GetDetail(id: string) {
@@ -62,8 +67,8 @@ export class Detail {
   }
 
   // get all books
-  GetBookDetail() {
-    this.bookservice.GetAllBook().subscribe((re: any) => {
+  GetRelatedBooks(id: string, cate: string) {
+    this.bookservice.GetRelateProduct(id, cate).subscribe((re: any) => {
       this.books.set(re);
     });
   }

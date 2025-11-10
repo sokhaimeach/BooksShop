@@ -24,66 +24,20 @@
     </div>
     <h1>Books Collections</h1>
     <div class="parent">
-        <div class="div1 collection">
+        @for(cate of categoriesList; track $index){
+        <div [class]="'div'+($index+1) +' collection'" [style.background-color]="cate.color">
             <div class="title-and-btn">
-                <h3 class="collection-title">Action and Adventure.</h3>
+                <h3 class="collection-title">{{cate.title}}</h3>
                 <button class="btn collection-btn">
                     <div class="circle"><i class="bi bi-chevron-right"></i></div>
                     View collection
                 </button>
             </div>
             <div class="img">
-                <img src="https://wearelitgr.com/cdn/shop/articles/Great_American_Read_1024x1024.jpg?v=1527017850" alt="">
+                <img [src]="cate.pic" alt="">
             </div>
         </div>
-        <div class="div2 collection">
-            <div class="title-and-btn">
-                <h3 class="collection-title">Collection 2</h3>
-                <button class="btn collection-btn">
-                    <div class="circle"><i class="bi bi-chevron-right"></i></div>
-                    View collection
-                </button>
-            </div>
-            <div class="img">
-                <img src="https://wearelitgr.com/cdn/shop/articles/Great_American_Read_1024x1024.jpg?v=1527017850" alt="">
-            </div>
-        </div>
-        <div class="div3 collection">
-            <div class="title-and-btn">
-                <h3 class="collection-title">Collection 3</h3>
-                <button class="btn collection-btn">
-                    <div class="circle"><i class="bi bi-chevron-right"></i></div>
-                    View collection
-                </button>
-            </div>
-            <div class="img">
-                <img src="https://wearelitgr.com/cdn/shop/articles/Great_American_Read_1024x1024.jpg?v=1527017850" alt="">
-            </div>
-        </div>
-        <div class="div4 collection">
-            <div class="title-and-btn">
-                <h3 class="collection-title">Collection 4</h3>
-                <button class="btn collection-btn">
-                    <div class="circle"><i class="bi bi-chevron-right"></i></div>
-                    View collection
-                </button>
-            </div>
-            <div class="img">
-                <img src="https://wearelitgr.com/cdn/shop/articles/Great_American_Read_1024x1024.jpg?v=1527017850" alt="">
-            </div>
-        </div>
-        <div class="div5 collection">
-            <div class="title-and-btn">
-                <h3 class="collection-title">Collection 5</h3>
-                <button class="btn collection-btn">
-                    <div class="circle"><i class="bi bi-chevron-right"></i></div>
-                    View collection
-                </button>
-            </div>
-            <div class="img">
-                <img src="https://wearelitgr.com/cdn/shop/articles/Great_American_Read_1024x1024.jpg?v=1527017850" alt="">
-            </div>
-        </div>
+        }
     </div>
 </section>
 <!-- end::categories list -->
@@ -109,7 +63,9 @@
     <div class="authors-list">
         @for(au of authors(); track $index){
         <div class="cards">
-            <div class="img">
+            <div class="img"
+            routerLink="/author"
+            [queryParams]="{id: au.id, name: au.name}">
                 <img [src]="au.imageUrl" alt="">`
             </div>
             <div class="media">
@@ -117,7 +73,8 @@
                     <i class="bi bi-facebook"></i>
                 </div>
             </div>
-            <h2>{{au.name}}</h2>
+            <h2 routerLink="/author"
+            [queryParams]="{id: au.id, name: au.name}">{{au.name}}</h2>
             <p>{{au.bio}}</p>
         </div>
         }

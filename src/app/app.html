@@ -1,31 +1,32 @@
 <!-- start navbar -->
 <nav>
   <div class="logo-section">
-    <a href="">Book Shop</a>
+    <a routerLink="/">Book Shop</a>
+    <a class="sub-logo" routerLink="/">B</a>
   </div>
   <!-- start menu -->
   <ul class="menu">
-    <li class="li">
-      <a href="">Home</a>
+    <li class="li" routerLink="/home" routerLinkActive="active">
+      <a>Home</a>
     </li>
-    <li class="li">
-      <a href="">Book</a>
+    <li class="li" routerLink="/book" routerLinkActive="active">
+      <a>Book</a>
     </li>
-    <li class="li">
-      <a href="">Authors <i class="bi bi-chevron-down ms-1"></i></a>
+    <li class="li" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}">
+      <a>Authors <i class="bi bi-chevron-down ms-1"></i></a>
       <ul class="sub-menu">
-        <li><a href="">Sokhai</a></li>
-        <li><a href="">Sokhai</a></li>
-        <li><a href="">Sokhai</a></li>
-        <li><a href="">Sokhai</a></li>
-        <li><a href="">Sokhai</a></li>
+        @for(author of authors(); track $index){
+        <li routerLink="/author"
+        [queryParams]="{id: author.id, name: author.name}"
+        routerLinkActive="actives"><a>{{author.name}}</a></li>
+        }
       </ul>
     </li>
-    <li class="li">
-      <a href="">Categories<i class="bi bi-chevron-down ms-1"></i></a>
+    <li class="li" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}">
+      <a>Categories<i class="bi bi-chevron-down ms-1"></i></a>
       <ul class="sub-menu">
         @for(cate of categories; track $index){
-        <li><a>{{cate}}</a></li>
+        <li [routerLink]="['/category', cate]" routerLinkActive="actives"><a>{{cate}}</a></li>
         }
       </ul>
     </li>
@@ -91,26 +92,24 @@
   </div>
   <div class="offcanvas-body">
     <ul class="off-list">
-      <li class="sub-li"><a class="sub-link">Home</a></li>
-      <li class="sub-li"><a class="sub-link">Book</a></li>
-      <li class="sub-li">
+      <li class="sub-li" routerLink="/home" routerLinkActive="sub-active"><a class="sub-link">Home</a></li>
+      <li class="sub-li" routerLink="/book" routerLinkActive="sub-active"><a class="sub-link">Book</a></li>
+      <li class="sub-li" routerLinkActive="sub-active" [routerLinkActiveOptions]="{ exact: true}">
         <a class="sub-link">Authors</a><i class="bi bi-chevron-down ms-1"></i>
         <ul class="off-sub-list">
-          <li><a href="">Sokhai</a></li>
-          <li><a href="">Sokhai</a></li>
-          <li><a href="">Sokhai</a></li>
-          <li><a href="">Sokhai</a></li>
-          <li><a href="">Sokhai</a></li>
+          @for(author of authors(); track $index){
+          <li routerLink="/author"
+          [queryParams]="{id: author.id, name: author.name}"
+          routerLinkActive="sub-sub-active"><a>{{author.name}}</a></li>
+        }
       </ul>
       </li>
-      <li class="sub-li">
+      <li class="sub-li" routerLinkActive="sub-active" [routerLinkActiveOptions]="{ exact: true}">
         <a class="sub-link">Categories</a><i class="bi bi-chevron-down ms-1"></i>
         <ul class="off-sub-list">
-          <li><a href="">Sokhai</a></li>
-          <li><a href="">Sokhai</a></li>
-          <li><a href="">Sokhai</a></li>
-          <li><a href="">Sokhai</a></li>
-          <li><a href="">Sokhai</a></li>
+          @for(cate of categories; track $index){
+          <li [routerLink]="['/category', cate]" routerLinkActive="sub-sub-active"><a>{{cate}}</a></li>
+          }
       </ul>
       </li>
       <li class="sub-li"><a class="sub-link">About</a></li>

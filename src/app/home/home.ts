@@ -4,16 +4,24 @@ import { Book } from '../Models/Book';
 import { Bookservice } from '../Services/bookservice';
 import { Authorservice } from '../Services/authorservice';
 import { Author } from '../Models/Author';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-home',
-  imports: [Card],
+  imports: [Card, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
 export class Home {
   books = signal<Book[]>([]);
   authors = signal<Author[]>([]);
+  categoriesList: any[] = [
+    {title: 'Action', pic: 'books1.png', color: '#105372'},
+    {title: 'Classic', pic: 'books2.png', color: '#26292a'},
+    {title: 'Historical', pic: 'books3.png', color: '#ff6600'},
+    {title: 'Comic Book', pic: 'books4.png', color: '#758bfd'},
+    {title: 'Economice', pic: 'books5.png', color: '#ae3535ff'}
+  ];
   constructor(private bookservice: Bookservice, private authorservice: Authorservice){}
   ngOnInit(): void{
     this.GetAll();
@@ -22,7 +30,7 @@ export class Home {
 
   // get all books
   GetAll() {
-    this.bookservice.GetAllBook().subscribe((re: any) => {
+    this.bookservice.GetMostSellBook().subscribe((re: any) => {
       this.books.set(re)
 
     });

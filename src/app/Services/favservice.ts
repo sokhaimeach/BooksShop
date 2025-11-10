@@ -18,6 +18,7 @@ export class Favservice {
   }
  // delete
   DeleteWishList(book: any){
+    if(this.userservice.GetId() === '') return;
     const newBook = book.favorite.filter((b: any) => b !== this.userservice.GetId());
     book.favorite = newBook;
     this.bookservice.UpdateBook(book).subscribe(() => {
@@ -26,6 +27,7 @@ export class Favservice {
   }
   // toggle wishList
   ToggleWishList(book: any){
+    if(this.userservice.GetId() === '') return;
     const ishave = book.favorite.find((b: any) => b === this.userservice.GetId()) || null;
     if(ishave===null){
       book.favorite.push(this.userservice.GetId());

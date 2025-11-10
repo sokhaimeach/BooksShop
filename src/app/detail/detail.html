@@ -18,7 +18,7 @@
   <div class="col-12">
     <div class="row">
       <!-- picture -->
-      <div class="col-md-6 ps-5 pe-5">
+      <div class="col-md-6 ps-5 pe-5 detail-img-container">
         <div class="detail-img">
           <img [src]="bookDetail().imageUrl" alt="book detail" />
         </div>
@@ -57,10 +57,6 @@
             <button class="btn ps-3 pe-3" (click)="toggleDetailHeart()">
               <i class="bi {{heart()}}"></i>
             </button>
-          </div>
-          <div class="number-orders">
-            <i class="bi bi-cart3 me-2"></i>
-            10 people have added this product to their cart
           </div>
           <div class="help">
             <i class="bi bi-info-circle-fill"></i>

@@ -5,7 +5,8 @@
         [src]="book.imageUrl"
         class="card-img-top"
         alt="..."
-        [routerLink]="['/detail',book.id]"
+        routerLink="/detail"
+        [queryParams]="{id: book.id, category: book.category}"
     />
     <div class="card-body">
         <h3 class="card-title">{{book.title}}</h3>
@@ -28,7 +29,10 @@
         <button class="btn btn-hide" (click)="fav.ToggleWishList(book)">
             <i class="bi" [classList]="fav.ToggleIcon(book.favorite)"></i>
         </button>
-        <button class="btn btn-hide" [routerLink]="['/detail',book.id]"><i class="bi bi-search"></i></button>
+        <button class="btn btn-hide" 
+        routerLink="/detail"
+        [queryParams]="{id: book.id, category: book.category}"
+        ><i class="bi bi-search"></i></button>
     </div>
     <button class="btn btn-danger rounded-pill wish-list-btn" (click)="fav.DeleteWishList(book)">
         <i class="bi bi-x-lg"></i>

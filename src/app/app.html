@@ -1,5 +1,5 @@
 <!-- start navbar -->
-<nav>
+<nav [style.display]="cart.closeNav()">
   <div class="logo-section">
     <a routerLink="/">Book Shop</a>
     <a class="sub-logo" routerLink="/">B</a>
@@ -30,8 +30,8 @@
         }
       </ul>
     </li>
-    <li class="li">
-      <a href="">About</a>
+    <li class="li" routerLink="/about" routerLinkActive="active">
+      <a>About</a>
     </li>
     <li class="li" routerLink="/contact" routerLinkActive="active">
       <a>Contact</a>
@@ -112,7 +112,7 @@
           }
       </ul>
       </li>
-      <li class="sub-li"><a class="sub-link">About</a></li>
+      <li class="sub-li" routerLink="/about" routerLinkActive="sub-active"><a class="sub-link">About</a></li>
       <li class="sub-li" routerLink="/contact" routerLinkActive="sub-active"><a class="sub-link">Contact</a></li>
     </ul>
   </div>

@@ -28,7 +28,7 @@
         <div [class]="'div'+($index+1) +' collection'" [style.background-color]="cate.color">
             <div class="title-and-btn">
                 <h3 class="collection-title">{{cate.title}}</h3>
-                <button class="btn collection-btn">
+                <button class="btn collection-btn" [routerLink]="['/category', cate.title]">
                     <div class="circle"><i class="bi bi-chevron-right"></i></div>
                     View collection
                 </button>

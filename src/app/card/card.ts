@@ -19,7 +19,9 @@ export class Card {
     public fav: Favservice,
     public user: Userservices,
     public cart: Cartservice
-  ) {}
+  ) {
+    this.cart.closeNav.set('flex');
+  }
   // calculate average rating
   averageRating(book: any): number {
     let total = 0;

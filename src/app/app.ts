@@ -40,11 +40,10 @@ export class App {
       this.userservice.Login('');
       this.loginRole.set('');
     }
-    console.log('login id : ',this.loginId)
   }
   // get all users
   GetUsers() {
-    this.userservice.GetAllUsers().subscribe((res: any) => {this.users = res; console.log(this.users)});
+    this.userservice.GetAllUsers().subscribe((res: any) => {this.users = res;});
   }
   // get authors
   GetAuthors(){

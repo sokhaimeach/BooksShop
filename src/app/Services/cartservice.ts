@@ -5,6 +5,7 @@ import { Injectable, signal } from '@angular/core';
 })
 export class Cartservice {
   bookCart = signal<any[]>([]);
+  closeNav = signal<string>('flex');
 
   AddToCart(book: any, qty: number) {
     if((this.bookCart().find((b: any) => b.id === book.id) || null) !== null) return;

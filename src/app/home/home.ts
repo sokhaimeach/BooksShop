@@ -5,6 +5,7 @@ import { Bookservice } from '../Services/bookservice';
 import { Authorservice } from '../Services/authorservice';
 import { Author } from '../Models/Author';
 import { RouterLink } from "@angular/router";
+import { Cartservice } from '../Services/cartservice';
 
 @Component({
   selector: 'app-home',
@@ -22,10 +23,11 @@ export class Home {
     {title: 'Comic Book', pic: 'books4.png', color: '#758bfd'},
     {title: 'Economice', pic: 'books5.png', color: '#ae3535ff'}
   ];
-  constructor(private bookservice: Bookservice, private authorservice: Authorservice){}
+  constructor(private bookservice: Bookservice, private authorservice: Authorservice, private cart: Cartservice){}
   ngOnInit(): void{
     this.GetAll();
     this.GetAuthors();
+    this.cart.closeNav.set('flex');
   }
 
   // get all books

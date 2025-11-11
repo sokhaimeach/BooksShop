@@ -17,7 +17,9 @@ export class Cart {
     public cart: Cartservice,
     private orderservice: Orderservices,
     private user: Userservices
-  ) {}
+  ) {
+    this.cart.closeNav.set('flex');
+  }
 
   CheckOut() {
     if(this.user.GetId() === ''){
